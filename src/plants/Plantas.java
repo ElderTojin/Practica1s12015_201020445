@@ -5,7 +5,7 @@
  */
 
 package plants;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author debian
@@ -49,13 +49,18 @@ public class Plantas extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText(" ");
 
         jLabel3.setText("Cantidad");
 
-        jTextField2.setText("jTextField1");
+        jTextField2.setText(" ");
 
         jButton2.setText("mas campos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,6 +126,15 @@ public class Plantas extends javax.swing.JFrame {
         setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        String first_name;
+        first_name = JOptionPane.showInputDialog("fisrt name");
+        System.out.println(first_name);
+       // System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
