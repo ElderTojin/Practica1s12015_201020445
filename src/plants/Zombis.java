@@ -11,14 +11,13 @@ import javax.swing.JOptionPane;
  * @author debian
  */
 public class Zombis extends javax.swing.JFrame {
-
     /**
      * Creates new form Zombis
      */
+    listaz l = new listaz();
     public Zombis() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,9 +29,10 @@ public class Zombis extends javax.swing.JFrame {
 
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,55 +43,62 @@ public class Zombis extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("plantas");
-
-        jButton1.setText("volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("ZOMBIS");
 
         jLabel2.setText("Nombre");
 
-        jTextField1.setText(" ");
+        jButton3.setText("Terminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Salir");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(117, 117, 117))
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(58, 58, 58))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(71, 71, 71)
+                .addGap(33, 33, 33)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -99,21 +106,78 @@ public class Zombis extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
         String first_name;
-        first_name = JOptionPane.showInputDialog("fisrt name");
+        first_name = JOptionPane.showInputDialog("Descripcion");
         System.out.println(first_name);
         // System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+  class listaz{
+	public Nodo inicio;					
+  
+	public listaz(){
+		inicio = null;
+	}
+	
+	public void insertar(String d){
+		Nodo tmp = new Nodo();				
+		tmp.dato = d;
+		
+		Nodo aux = inicio;				
+		if(inicio == null)
+			inicio = tmp;				
+		else
+		{
+			while(true)
+			{
+				if(aux.siguiente!=null)
+					aux = aux.siguiente;
+				else
+					break;
+			}
+			
+			aux.siguiente = tmp;
+			aux.siguiente.anterior = aux;	
+		}
+	}
+	
+	public void recorrer(){
+		Nodo aux = inicio;			
+		while(true)
+		{
+			System.out.print(aux.dato+" ->");
+			if(aux.siguiente!=null)		
+				aux = aux.siguiente;
+			else
+				break;			
+		}		
+	}       
+  }
+        
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Menu m= new Menu();
-        m.setVisible(true);
-        setVisible(false);
+        Menu m = new Menu();
+        if (jTextField1.getText().length()==0 ){
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }
+            else{
+         String dato = jTextField1.getText();
+         l.insertar(dato);
+         l.recorrer();
+         jTextField1.setText("");
+         m.jButton4.setEnabled(true);
+         m.setVisible(true);
+         setVisible(false);
+         m.jButton6.setEnabled(false);
+        }
+         
+         
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        System.exit(2);
+    }//GEN-LAST:event_jButton4ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -150,8 +214,9 @@ public class Zombis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
